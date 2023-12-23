@@ -1,5 +1,5 @@
 # Setup
-with open('example.txt') as f:
+with open('2023/day_5/input.txt') as f:
     lines = f.readlines()
 
 lines = [word.strip() for word in lines]
@@ -63,11 +63,40 @@ for seed in seeds:
                 n = sub_map[0] + (n-sub_map[1])
                 break
             
-                
     location_list.append(n)
+
 
 answer_1 = min(location_list)
 
 
+# Part 2
+# Create list of seed pairs (i.e. start of range and length of range)
+seeds_pair_list = []
+for i in range(0, len(seeds), 2):
+    seeds_pair_list.append([seeds[i], seeds[i+1]])
+
+#Idea --> Work completely backwards
+smallest_location = 0
+answer_flag = False
+while answer_flag != True:
+    n = smallest_location
+    for map_input in reversed(list_of_map_inputs):
+        for sub_map in map_input:
+            range_length = sub_map[2] - 1
+            if n >= sub_map[0] and n <= sub_map[0] + range_length:
+                n = sub_map[1] + (n-sub_map[0])
+                break
+
+    for seed_pair in seeds_pair_list:
+        if n >= seed_pair[0] and n <= seed_pair[0] + seed_pair[1] - 1:
+            answer_flag = True
+    
+    if answer_flag == False:
+        smallest_location += 1
+        
+
+answer_2 = smallest_location
+
 
 print(answer_1)
+print(answer_2)
