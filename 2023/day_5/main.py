@@ -75,7 +75,7 @@ seeds_pair_list = []
 for i in range(0, len(seeds), 2):
     seeds_pair_list.append([seeds[i], seeds[i+1]])
 
-#Idea --> Work completely backwards
+# Idea --> Work completely backwards
 smallest_location = 0
 answer_flag = False
 while answer_flag != True:
