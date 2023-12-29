@@ -64,14 +64,6 @@ def find_start_nodes(my_network):
     return starting_nodes
 
 
-def check_all_end_z(my_nodes):
-    check = True
-    for node in my_nodes:
-        if node[2] != "Z":
-            check = False
-    return check
-
-
 def count_steps_simultaneous(my_instructions, my_network_input):
     starting_paths = find_start_nodes(my_network_input)
     starting_nodes = [find_node(s, my_network_input) for s in starting_paths]
